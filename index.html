@@ -31,6 +31,49 @@
         height: 100%;
         object-fit: cover;
       }
+
+      /* Audio Player Slider Styling */
+      input[type="range"].slider {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 100%;
+        height: 6px;
+        border-radius: 5px;
+        background: #94a3b8;
+        outline: none;
+        cursor: pointer;
+      }
+
+      input[type="range"].slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: #10B981;
+        cursor: pointer;
+        box-shadow: 0 0 4px rgba(16, 185, 129, 0.7);
+        border: 1.5px solid #fff;
+      }
+
+      input[type="range"].slider::-moz-range-thumb {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: #10B981;
+        cursor: pointer;
+        border: 1.5px solid #fff;
+        box-shadow: 0 0 4px rgba(16, 185, 129, 0.7);
+      }
+
+      input[type="range"].slider::-moz-range-track {
+        background: transparent;
+        border: none;
+      }
+
+      input[type="range"].slider::-moz-range-progress {
+        background-color: #10B981;
+      }
     </style>
     <script>
       if (
@@ -128,6 +171,24 @@
                     >Contact</a
                   >
                 </li> -->
+                <!-- Audio Player Start -->
+                <li class="flex items-center pl-8 mt-3 lg:mt-0">
+                  <div class="flex items-center gap-2 bg-gradient-to-r from-slate-300 to-slate-200 dark:from-slate-700 dark:to-slate-600 rounded-full p-2 px-3 shadow-md border border-slate-400 dark:border-slate-600">
+                    <img src="src/iconaudioplayer.jpg" alt="Music Icon" class="w-5 h-5 rounded-full object-cover">
+                    <button id="audio-toggle" class="text-primary hover:text-primary/80 transition" title="Play/Pause">
+                      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                        <path id="play-icon" d="M5.5 3v14l11-7z"/>
+                        <path id="pause-icon" class="hidden" d="M6 4h3v12H6V4zm5 0h3v12h-3V4z"/>
+                      </svg>
+                    </button>
+                    <audio id="audio-player" class="w-0 h-0">
+                      <source src="src/SiapkahKauTukJatuhCintaLagi-HIVI.mp3" type="audio/mpeg">
+                    </audio>
+                    <input type="range" id="audio-progress" class="w-28 h-1.5 bg-slate-500 rounded-full cursor-pointer appearance-none slider" min="0" max="100" value="0" title="Progress">
+                    <input type="range" id="audio-volume" class="w-16 h-1.5 bg-slate-500 rounded-full cursor-pointer appearance-none slider" min="0" max="100" value="70" title="Volume">
+                  </div>
+                </li>
+                <!-- Audio Player End -->
                 <li class="flex items-center pl-8 mt-3 lg:mt-0">
                   <div class="flex">
                     <span class="mr-2 text-sm text-slate-500"></span>
@@ -618,6 +679,31 @@
             </p>
           </div>
         </div>
+
+        <!-- Video Demo Section -->
+        <div class="w-full px-4 mt-20">
+          <div class="max-w-4xl mx-auto">
+            <h3 class="font-semibold text-lg text-primary mb-2 text-center">Video Demo</h3>
+            <h2 class="font-bold text-dark text-3xl mb-8 text-center dark:text-white">
+              Demo Projects SAMPIS
+            </h2>
+            <div class="relative w-full" style="padding-bottom: 56.25%; height: 0; overflow: hidden;">
+              <iframe
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+                src="https://www.youtube.com/embed/PXtXPSoXyho"
+                title="Demo Projects SAMPIS"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+              </iframe>
+            </div>
+            <p class="font-medium text-base text-secondary mt-6 text-center">
+              Video ini menampilkan demo lengkap dari SAMPIS - platform manajemen limbah berbasis deep learning yang 
+              mengklasifikasi limbah rumah tangga dan mendukung sistem poin untuk daur ulang.
+            </p>
+          </div>
+        </div>
+        <!-- Video Demo End -->
       </div>
     </section>
     <!-- Portofolio end -->
