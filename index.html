@@ -32,47 +32,42 @@
         object-fit: cover;
       }
 
-      /* Audio Player Slider Styling */
-      input[type="range"].slider {
-        -webkit-appearance: none;
-        appearance: none;
-        width: 100%;
-        height: 6px;
-        border-radius: 5px;
-        background: #94a3b8;
-        outline: none;
-        cursor: pointer;
+      /* Project filter tabs */
+      .project-tab {
+        transition: all 0.25s ease-in-out;
       }
-
-      input[type="range"].slider::-webkit-slider-thumb {
-        -webkit-appearance: none;
-        appearance: none;
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        background: #10B981;
-        cursor: pointer;
-        box-shadow: 0 0 4px rgba(16, 185, 129, 0.7);
-        border: 1.5px solid #fff;
-      }
-
-      input[type="range"].slider::-moz-range-thumb {
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        background: #10B981;
-        cursor: pointer;
-        border: 1.5px solid #fff;
-        box-shadow: 0 0 4px rgba(16, 185, 129, 0.7);
-      }
-
-      input[type="range"].slider::-moz-range-track {
-        background: transparent;
-        border: none;
-      }
-
-      input[type="range"].slider::-moz-range-progress {
+      .project-tab.active {
         background-color: #10B981;
+        color: #ffffff;
+        box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35);
+      }
+      .project-tab:not(.active) {
+        background-color: transparent;
+        color: #64748b;
+      }
+      .project-tab:not(.active):hover {
+        background-color: rgba(16, 185, 129, 0.1);
+        color: #10B981;
+      }
+
+      /* Project card */
+      .project-card {
+        transition: transform 0.25s ease-in-out, box-shadow 0.25s ease-in-out;
+      }
+      .project-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.18);
+      }
+
+      .project-panel {
+        display: none;
+      }
+      .project-panel.active {
+        display: flex;
+      }
+
+      .category-badge {
+        letter-spacing: 0.02em;
       }
     </style>
     <script>
@@ -171,24 +166,6 @@
                     >Contact</a
                   >
                 </li> -->
-                <!-- Audio Player Start -->
-                <li class="flex items-center pl-8 mt-3 lg:mt-0">
-                  <div class="flex items-center gap-2 bg-gradient-to-r from-slate-300 to-slate-200 dark:from-slate-700 dark:to-slate-600 rounded-full p-2 px-3 shadow-md border border-slate-400 dark:border-slate-600">
-                    <img src="src/iconaudioplayer.jpg" alt="Music Icon" class="w-5 h-5 rounded-full object-cover">
-                    <button id="audio-toggle" class="text-primary hover:text-primary/80 transition" title="Play/Pause">
-                      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                        <path id="play-icon" d="M5.5 3v14l11-7z"/>
-                        <path id="pause-icon" class="hidden" d="M6 4h3v12H6V4zm5 0h3v12h-3V4z"/>
-                      </svg>
-                    </button>
-                    <audio id="audio-player" class="w-0 h-0">
-                      <source src="src/SiapkahKauTukJatuhCintaLagi-HIVI.mp3" type="audio/mpeg">
-                    </audio>
-                    <input type="range" id="audio-progress" class="w-28 h-1.5 bg-slate-500 rounded-full cursor-pointer appearance-none slider" min="0" max="100" value="0" title="Progress">
-                    <input type="range" id="audio-volume" class="w-16 h-1.5 bg-slate-500 rounded-full cursor-pointer appearance-none slider" min="0" max="100" value="70" title="Volume">
-                  </div>
-                </li>
-                <!-- Audio Player End -->
                 <li class="flex items-center pl-8 mt-3 lg:mt-0">
                   <div class="flex">
                     <span class="mr-2 text-sm text-slate-500"></span>
@@ -376,7 +353,7 @@
     <section id="portofolio" class="pt-36 pb-16 bg-slate-100 dark:bg-slate-800">
       <div class="container">
         <div class="w-full px-4">
-          <div class="max-w-xl mx-auto text-center mb-16">
+          <div class="max-w-xl mx-auto text-center mb-12">
             <h4 class="font-semibold text-lg text-primary mb-2">Portofolio</h4>
             <h2 class="font-bold text-dark text-3xl mb-4 dark:text-white">
               Project
@@ -388,306 +365,362 @@
             </p>
           </div>
         </div>
-        <div
-          class="w-full px-4 flex flex-wrap justify-center xl:w-10/12 xl:mx-auto"
-        >
-        <!-- SAMPIS -->
-        <div class="mb-12 p-4 md:w-1/2">
-          <div class="rounded-md shado2-md overflow-hidden">
-            <img
-              src="dist/img/portofolio/project11.png"
-              alt="SAMPIS"
-              width="w-full"
-            />
-          </div>
-          <h3
-            class="font-semibold text-xl text-dark mt-5 mb-3 dark:text-white underline"
-          >
-            <a
-              target="_blank"
-              href="https://sampis.netlify.app/"
-              class="hover:text-primary"
-              >SAMPIS</a
+
+        <!-- Project filter tabs -->
+        <div class="w-full px-4 flex justify-center mb-10">
+          <div class="inline-flex items-center gap-2 bg-white dark:bg-slate-900 rounded-full p-1.5 shadow-sm">
+            <button
+              type="button"
+              data-target="individual-projects"
+              class="project-tab active font-semibold text-sm py-2.5 px-6 rounded-full"
             >
-          </h3>
-          <p class="font-medium text-base text-secondary">
-            Developed a deep learning-based image classification model for SAMPIS, a web platform for waste management that utilizes AI to classify household waste and supports a point-based recycling system
-          </p>
-        </div>
-        <!-- ml terapan - rekomendasi musik -->
-        <div class="mb-12 p-4 md:w-1/2">
-          <div class="rounded-md shado2-md overflow-hidden">
-            <img
-              src="dist/img/portofolio/project9.png"
-              alt="Music Recommender System"
-              width="w-full"
-            />
-          </div>
-          <h3
-            class="font-semibold text-xl text-dark mt-5 mb-3 dark:text-white underline"
-          >
-            <a
-              target="_blank"
-              href="https://github.com/nabilalwyh/music-recommender-system"
-              class="hover:text-primary"
-              >Music Recommender System</a
+              Individual Projects
+            </button>
+            <button
+              type="button"
+              data-target="group-projects"
+              class="project-tab font-semibold text-sm py-2.5 px-6 rounded-full"
             >
-          </h3>
-          <p class="font-medium text-base text-secondary">
-            Course project from Dicoding in learning path Applied Machine Learning. Developed a model machine learning project focusing on Music Recommender System. I earned a 4 out of 5 stars rating for this project.
-          </p>
-        </div>
-        <!-- fundamental pemrosesan data -->
-          <div class="mb-12 p-4 md:w-1/2">
-            <div class="rounded-md shado2-md overflow-hidden">
-              <img
-                src="dist/img/portofolio/project10.png"
-                alt="ETL Pipeline"
-                width="w-full"
-              />
-            </div>
-            <h3
-              class="font-semibold text-xl text-dark mt-5 mb-3 dark:text-white underline"
-            >
-              <a
-                target="_blank"
-                href="https://github.com/nabilalwyh/music-recommender-system"
-                class="hover:text-primary"
-                >ETL Pipeline</a
-              >
-            </h3>
-            <p class="font-medium text-base text-secondary">
-              Course project from Dicoding in learning path Fundamentals of Data Processing. Developed a project to build a simple ETL Pipeline. I earned a 5 out of 5 stars rating for this project.
-            </p>
-          </div>
-        <!-- ml terapan - predictive analyst -->
-          <div class="mb-12 p-4 md:w-1/2">
-            <div class="rounded-md shado2-md overflow-hidden">
-              <img
-                src="dist/img/portofolio/project10.png"
-                alt="Predictive Analysis"
-                width="w-full"
-              />
-            </div>
-            <h3
-              class="font-semibold text-xl text-dark mt-5 mb-3 dark:text-white underline"
-            >
-              <a
-                target="_blank"
-                href="https://github.com/nabilalwyh/music-recommender-system"
-                class="hover:text-primary"
-                >Predict Obesity Level</a
-              >
-            </h3>
-            <p class="font-medium text-base text-secondary">
-              Course project from Dicoding in learning path Applied Machine Learning. Developed a model machine learning project focusing on predictive analytics system to predict obesity levels based on lifestyle patterns. I earned a 5 out of 5 stars rating for this project.
-            </p>
-          </div>
-        <!-- ml dev-klasifikasi gambar -->
-          <div class="mb-12 p-4 md:w-1/2">
-            <div class="rounded-md shado2-md overflow-hidden">
-              <img
-                src="dist/img/portofolio/project8.png"
-                alt="Image Classification"
-                width="w-full"
-              />
-            </div>
-            <h3
-              class="font-semibold text-xl text-dark mt-5 mb-3 dark:text-white underline"
-            >
-              <a
-                target="_blank"
-                href="https://github.com/nabilalwyh/image-classification-of-17-vegetables/"
-                class="hover:text-primary"
-                >Image Classification of 17 Class Vegetables</a
-              >
-            </h3>
-            <p class="font-medium text-base text-secondary">
-              Course project from Dicoding in learning path Fundamentals of Deep Learning. Developed a model machine learning project focusing on Image Classification of 17 Types of Vegetables. I earned a 5 out of 5 stars rating for this project.
-            </p>
-          </div>
-        <!-- ml dev-sentimen -->
-          <div class="mb-12 p-4 md:w-1/2">
-            <div class="rounded-md shado2-md overflow-hidden">
-              <img
-                src="dist/img/portofolio/project7.png"
-                alt="Sentiment Analysis"
-                width="w-full"
-              />
-            </div>
-            <h3
-              class="font-semibold text-xl text-dark mt-5 mb-3 dark:text-white underline"
-            >
-              <a
-                target="_blank"
-                href="https://github.com/nabilalwyh/sentimen-analisis-ruangguru/"
-                class="hover:text-primary"
-                >Sentiment Analysis</a
-              >
-            </h3>
-            <p class="font-medium text-base text-secondary">
-              Course project from Dicoding in learning path Fundamentals of Deep Learning. Developed a model machine learning project focusing on sentiment analysis on Ruang Guru app reviews on playstore. I earned a 4 out of 5 stars rating for this project.
-            </p>
-          </div>
-        <!-- bmlp -->
-          <div class="mb-12 p-4 md:w-1/2">
-            <div class="rounded-md shado2-md overflow-hidden">
-              <img
-                src="dist/img/portofolio/project6.png"
-                alt="Belajar Mesin Learning Pemula"
-                width="w-full"
-              />
-            </div>
-            <h3
-              class="font-semibold text-xl text-dark mt-5 mb-3 dark:text-white underline"
-            >
-              <a
-                target="_blank"
-                href="https://github.com/nabilalwyh/BMLP-dicoding"
-                class="hover:text-primary"
-                >Clustering and Classification with Machine Learning</a
-              >
-            </h3>
-            <p class="font-medium text-base text-secondary">
-              Course project from Dicoding in learning path Machine Learning for Beginners. Earned a 4 out of 5 stars rating for the final project. 
-            </p>
-          </div>
-        <!-- gunadarmart -->
-          <div class="mb-12 p-4 md:w-1/2">
-            <div class="rounded-md shado2-md overflow-hidden">
-              <img
-                src="dist/img/portofolio/project5.png"
-                alt="Analisis E-Commerce"
-                width="w-full"
-              />
-            </div>
-            <h3
-              class="font-semibold text-xl text-dark mt-5 mb-3 dark:text-white underline"
-            >
-              <a
-                target="_blank"
-                href="https://gunadarmart-ecommerce-analyst.streamlit.app/"
-                class="hover:text-primary"
-                >Analysis of E-Commerce Public Dataset</a
-              >
-            </h3>
-            <p class="font-medium text-base text-secondary">
-              Course project from Dicoding in learning path Data Analysis with
-              Python. Earned a 4 out of 5 stars rating for the final project. 
-            </p>
-          </div>
-        <!-- covid19 -->
-          <div class="mb-12 p-4 md:w-1/2">
-            <div class="rounded-md shado2-md overflow-hidden">
-              <img
-                src="dist/img/portofolio/project1.png"
-                alt="Analisis Covid19"
-                width="w-full"
-              />
-            </div>
-            <h3
-              class="font-semibold text-xl text-dark mt-5 mb-3 dark:text-white underline"
-            >
-              <a
-                target="_blank"
-                href="https://colab.research.google.com/github/nabilalwyh/covid19-at-kutai-timur/blob/main/analisis-kasus-covid19-di-kabupaten-kutai-timur.ipynb?authuser=1"
-                class="hover:text-primary"
-                >Analysis of COVID-19 cases in the region of Eastern Kutai.</a
-              >
-            </h3>
-            <p class="font-medium text-base text-secondary">
-              Group project in course statistics on normal distribution concepts
-              with Python programming languages.
-            </p>
-          </div>
-        <!-- maskapai -->
-          <div class="mb-12 p-4 md:w-1/2">
-            <div class="rounded-md shado2-md overflow-hidden">
-              <img
-                src="dist/img/portofolio/project2.png"
-                alt="Website Data Maskapai Penerbangan"
-                width="w-full"
-              />
-            </div>
-            <h3
-              class="font-semibold text-xl text-dark mt-5 mb-3 dark:text-white underline"
-            >
-              <a
-                href="https://github.com/nabilalwyh/daftar-maskapai-penerbangan"
-                target="_blank"
-                class="hover:text-primary"
-                >Airline Data Website</a
-              >
-            </h3>
-            <p class="font-medium text-base text-secondary">
-              On this website, users can adding an airline data. This website is
-              built using PHP, JSON, HTML, and CSS/Bootstrap v5 programming
-              languages.
-            </p>
-          </div>
-        <!-- nasi kotak -->
-          <div class="mb-12 p-4 md:w-1/2">
-            <div class="rounded-md shado2-md overflow-hidden">
-              <img
-                src="dist/img/portofolio/project3.png"
-                alt="Website Pemesanan Nasi Kotak"
-                width="w-full"
-              />
-            </div>
-            <h3
-              class="font-semibold text-xl text-dark mt-5 mb-3 dark:text-white underline"
-            >
-              <a
-                href="https://github.com/nabilalwyh/pemesanan-nasi-kotak"
-                target="_blank"
-                class="hover:text-primary"
-                >Terserah Restaurant Website</a
-              >
-            </h3>
-            <p class="font-medium text-base text-secondary">
-              Customers can order boxed rice from several boxed rice stall
-              branches on this website. The programming languages PHP, HTML,
-              CSS/Bootstrap v5, and JSON were used in the development of this
-              website.
-            </p>
-          </div>
-        <!-- induksi magnet -->
-          <div class="mb-12 p-4 md:w-1/2">
-            <div class="rounded-md shado2-md overflow-hidden">
-              <img
-                src="dist/img/portofolio/project4.png"
-                alt="Website Induksi Magnetik"
-                width="w-full"
-              />
-            </div>
-            <h3
-              class="font-semibold text-xl text-dark mt-5 mb-3 dark:text-white underline"
-            >
-              <a
-                href="https://nabilalwyh.github.io/Induksi-Magnetik/"
-                target="_blank"
-                class="hover:text-primary"
-                >Magnetic Induction Website</a
-              >
-            </h3>
-            <p class="font-medium text-base text-secondary">
-              This website teaches physics with a special focus on magnetic
-              induction. Three subtopics make up this section: magnetic
-              induction calculator, example problems, and basic theory. The
-              programming languages Javascript, CSS/Bootstrap v5, and HTML were
-              used in its development.
-            </p>
+              Group Projects
+            </button>
           </div>
         </div>
 
+        <!-- Individual Projects -->
+        <div
+          id="individual-projects"
+          class="project-panel active w-full px-4 flex-wrap justify-center xl:w-10/12 xl:mx-auto"
+        >
+        <!-- SAMPIS -->
+        <div class="mb-8 p-4 md:w-1/2">
+          <div class="project-card bg-white dark:bg-slate-900 rounded-xl shadow-md overflow-hidden h-full">
+            <div class="overflow-hidden">
+              <img
+                src="dist/img/portofolio/project11.png"
+                alt="SAMPIS"
+                class="w-full h-48 object-cover"
+              />
+            </div>
+            <div class="p-6">
+              <h3 class="font-semibold text-xl text-dark mb-3 dark:text-white">
+                <a
+                  target="_blank"
+                  href="https://sampis.netlify.app/"
+                  class="hover:text-primary"
+                  >SAMPIS</a
+                >
+              </h3>
+              <p class="font-medium text-base text-secondary">
+                Developed a deep learning-based image classification model for SAMPIS, a web platform for waste management that utilizes AI to classify household waste and supports a point-based recycling system
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- ml terapan - rekomendasi musik -->
+        <div class="mb-8 p-4 md:w-1/2">
+          <div class="project-card bg-white dark:bg-slate-900 rounded-xl shadow-md overflow-hidden h-full">
+            <div class="overflow-hidden">
+              <img
+                src="dist/img/portofolio/project9.png"
+                alt="Music Recommender System"
+                class="w-full h-48 object-cover"
+              />
+            </div>
+            <div class="p-6">
+              <h3 class="font-semibold text-xl text-dark mb-3 dark:text-white">
+                <a
+                  target="_blank"
+                  href="https://github.com/nabilalwyh/music-recommender-system"
+                  class="hover:text-primary"
+                  >Music Recommender System</a
+                >
+              </h3>
+              <p class="font-medium text-base text-secondary">
+                Course project from Dicoding in learning path Applied Machine Learning. Developed a model machine learning project focusing on Music Recommender System. I earned a 4 out of 5 stars rating for this project.
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- fundamental pemrosesan data -->
+          <div class="mb-8 p-4 md:w-1/2">
+            <div class="project-card bg-white dark:bg-slate-900 rounded-xl shadow-md overflow-hidden h-full">
+              <div class="overflow-hidden">
+                <img
+                  src="dist/img/portofolio/project10.png"
+                  alt="ETL Pipeline"
+                  class="w-full h-48 object-cover"
+                />
+              </div>
+              <div class="p-6">
+                <h3 class="font-semibold text-xl text-dark mb-3 dark:text-white">
+                  <a
+                    target="_blank"
+                    href="https://github.com/nabilalwyh/music-recommender-system"
+                    class="hover:text-primary"
+                    >ETL Pipeline</a
+                  >
+                </h3>
+                <p class="font-medium text-base text-secondary">
+                  Course project from Dicoding in learning path Fundamentals of Data Processing. Developed a project to build a simple ETL Pipeline. I earned a 5 out of 5 stars rating for this project.
+                </p>
+              </div>
+            </div>
+          </div>
+        <!-- ml terapan - predictive analyst -->
+          <div class="mb-8 p-4 md:w-1/2">
+            <div class="project-card bg-white dark:bg-slate-900 rounded-xl shadow-md overflow-hidden h-full">
+              <div class="overflow-hidden">
+                <img
+                  src="dist/img/portofolio/project10.png"
+                  alt="Predictive Analysis"
+                  class="w-full h-48 object-cover"
+                />
+              </div>
+              <div class="p-6">
+                <h3 class="font-semibold text-xl text-dark mb-3 dark:text-white">
+                  <a
+                    target="_blank"
+                    href="https://github.com/nabilalwyh/music-recommender-system"
+                    class="hover:text-primary"
+                    >Predict Obesity Level</a
+                  >
+                </h3>
+                <p class="font-medium text-base text-secondary">
+                  Course project from Dicoding in learning path Applied Machine Learning. Developed a model machine learning project focusing on predictive analytics system to predict obesity levels based on lifestyle patterns. I earned a 5 out of 5 stars rating for this project.
+                </p>
+              </div>
+            </div>
+          </div>
+        <!-- ml dev-klasifikasi gambar -->
+          <div class="mb-8 p-4 md:w-1/2">
+            <div class="project-card bg-white dark:bg-slate-900 rounded-xl shadow-md overflow-hidden h-full">
+              <div class="overflow-hidden">
+                <img
+                  src="dist/img/portofolio/project8.png"
+                  alt="Image Classification"
+                  class="w-full h-48 object-cover"
+                />
+              </div>
+              <div class="p-6">
+                <h3 class="font-semibold text-xl text-dark mb-3 dark:text-white">
+                  <a
+                    target="_blank"
+                    href="https://github.com/nabilalwyh/image-classification-of-17-vegetables/"
+                    class="hover:text-primary"
+                    >Image Classification of 17 Class Vegetables</a
+                  >
+                </h3>
+                <p class="font-medium text-base text-secondary">
+                  Course project from Dicoding in learning path Fundamentals of Deep Learning. Developed a model machine learning project focusing on Image Classification of 17 Types of Vegetables. I earned a 5 out of 5 stars rating for this project.
+                </p>
+              </div>
+            </div>
+          </div>
+        <!-- ml dev-sentimen -->
+          <div class="mb-8 p-4 md:w-1/2">
+            <div class="project-card bg-white dark:bg-slate-900 rounded-xl shadow-md overflow-hidden h-full">
+              <div class="overflow-hidden">
+                <img
+                  src="dist/img/portofolio/project7.png"
+                  alt="Sentiment Analysis"
+                  class="w-full h-48 object-cover"
+                />
+              </div>
+              <div class="p-6">
+                <h3 class="font-semibold text-xl text-dark mb-3 dark:text-white">
+                  <a
+                    target="_blank"
+                    href="https://github.com/nabilalwyh/sentimen-analisis-ruangguru/"
+                    class="hover:text-primary"
+                    >Sentiment Analysis</a
+                  >
+                </h3>
+                <p class="font-medium text-base text-secondary">
+                  Course project from Dicoding in learning path Fundamentals of Deep Learning. Developed a model machine learning project focusing on sentiment analysis on Ruang Guru app reviews on playstore. I earned a 4 out of 5 stars rating for this project.
+                </p>
+              </div>
+            </div>
+          </div>
+        <!-- bmlp -->
+          <div class="mb-8 p-4 md:w-1/2">
+            <div class="project-card bg-white dark:bg-slate-900 rounded-xl shadow-md overflow-hidden h-full">
+              <div class="overflow-hidden">
+                <img
+                  src="dist/img/portofolio/project6.png"
+                  alt="Belajar Mesin Learning Pemula"
+                  class="w-full h-48 object-cover"
+                />
+              </div>
+              <div class="p-6">
+                <h3 class="font-semibold text-xl text-dark mb-3 dark:text-white">
+                  <a
+                    target="_blank"
+                    href="https://github.com/nabilalwyh/BMLP-dicoding"
+                    class="hover:text-primary"
+                    >Clustering and Classification with Machine Learning</a
+                  >
+                </h3>
+                <p class="font-medium text-base text-secondary">
+                  Course project from Dicoding in learning path Machine Learning for Beginners. Earned a 4 out of 5 stars rating for the final project. 
+                </p>
+              </div>
+            </div>
+          </div>
+        <!-- gunadarmart -->
+          <div class="mb-8 p-4 md:w-1/2">
+            <div class="project-card bg-white dark:bg-slate-900 rounded-xl shadow-md overflow-hidden h-full">
+              <div class="overflow-hidden">
+                <img
+                  src="dist/img/portofolio/project5.png"
+                  alt="Analisis E-Commerce"
+                  class="w-full h-48 object-cover"
+                />
+              </div>
+              <div class="p-6">
+                <h3 class="font-semibold text-xl text-dark mb-3 dark:text-white">
+                  <a
+                    target="_blank"
+                    href="https://gunadarmart-ecommerce-analyst.streamlit.app/"
+                    class="hover:text-primary"
+                    >Analysis of E-Commerce Public Dataset</a
+                  >
+                </h3>
+                <p class="font-medium text-base text-secondary">
+                  Course project from Dicoding in learning path Data Analysis with
+                  Python. Earned a 4 out of 5 stars rating for the final project. 
+                </p>
+              </div>
+            </div>
+          </div>
+        <!-- maskapai -->
+          <div class="mb-8 p-4 md:w-1/2">
+            <div class="project-card bg-white dark:bg-slate-900 rounded-xl shadow-md overflow-hidden h-full">
+              <div class="overflow-hidden">
+                <img
+                  src="dist/img/portofolio/project2.png"
+                  alt="Website Data Maskapai Penerbangan"
+                  class="w-full h-48 object-cover"
+                />
+              </div>
+              <div class="p-6">
+                <h3 class="font-semibold text-xl text-dark mb-3 dark:text-white">
+                  <a
+                    href="https://github.com/nabilalwyh/daftar-maskapai-penerbangan"
+                    target="_blank"
+                    class="hover:text-primary"
+                    >Airline Data Website</a
+                  >
+                </h3>
+                <p class="font-medium text-base text-secondary">
+                  On this website, users can adding an airline data. This website is
+                  built using PHP, JSON, HTML, and CSS/Bootstrap v5 programming
+                  languages.
+                </p>
+              </div>
+            </div>
+          </div>
+        <!-- nasi kotak -->
+          <div class="mb-8 p-4 md:w-1/2">
+            <div class="project-card bg-white dark:bg-slate-900 rounded-xl shadow-md overflow-hidden h-full">
+              <div class="overflow-hidden">
+                <img
+                  src="dist/img/portofolio/project3.png"
+                  alt="Website Pemesanan Nasi Kotak"
+                  class="w-full h-48 object-cover"
+                />
+              </div>
+              <div class="p-6">
+                <h3 class="font-semibold text-xl text-dark mb-3 dark:text-white">
+                  <a
+                    href="https://github.com/nabilalwyh/pemesanan-nasi-kotak"
+                    target="_blank"
+                    class="hover:text-primary"
+                    >Terserah Restaurant Website</a
+                  >
+                </h3>
+                <p class="font-medium text-base text-secondary">
+                  Customers can order boxed rice from several boxed rice stall
+                  branches on this website. The programming languages PHP, HTML,
+                  CSS/Bootstrap v5, and JSON were used in the development of this
+                  website.
+                </p>
+              </div>
+            </div>
+          </div>
+        <!-- induksi magnet -->
+          <div class="mb-8 p-4 md:w-1/2">
+            <div class="project-card bg-white dark:bg-slate-900 rounded-xl shadow-md overflow-hidden h-full">
+              <div class="overflow-hidden">
+                <img
+                  src="dist/img/portofolio/project4.png"
+                  alt="Website Induksi Magnetik"
+                  class="w-full h-48 object-cover"
+                />
+              </div>
+              <div class="p-6">
+                <h3 class="font-semibold text-xl text-dark mb-3 dark:text-white">
+                  <a
+                    href="https://nabilalwyh.github.io/Induksi-Magnetik/"
+                    target="_blank"
+                    class="hover:text-primary"
+                    >Magnetic Induction Website</a
+                  >
+                </h3>
+                <p class="font-medium text-base text-secondary">
+                  This website teaches physics with a special focus on magnetic
+                  induction. Three subtopics make up this section: magnetic
+                  induction calculator, example problems, and basic theory. The
+                  programming languages Javascript, CSS/Bootstrap v5, and HTML were
+                  used in its development.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Individual Projects end -->
+
+        <!-- Group Projects -->
+        <div
+          id="group-projects"
+          class="project-panel w-full px-4 flex-wrap justify-center xl:w-10/12 xl:mx-auto"
+        >
+        <!-- covid19 -->
+          <div class="mb-8 p-4 md:w-1/2">
+            <div class="project-card bg-white dark:bg-slate-900 rounded-xl shadow-md overflow-hidden h-full">
+              <div class="overflow-hidden">
+                <img
+                  src="dist/img/portofolio/project1.png"
+                  alt="Analisis Covid19"
+                  class="w-full h-48 object-cover"
+                />
+              </div>
+              <div class="p-6">
+                <h3 class="font-semibold text-xl text-dark mb-3 dark:text-white">
+                  <a
+                    target="_blank"
+                    href="https://colab.research.google.com/github/nabilalwyh/covid19-at-kutai-timur/blob/main/analisis-kasus-covid19-di-kabupaten-kutai-timur.ipynb?authuser=1"
+                    class="hover:text-primary"
+                    >Analysis of COVID-19 cases in the region of Eastern Kutai.</a
+                  >
+                </h3>
+                <p class="font-medium text-base text-secondary">
+                  Group project in course statistics on normal distribution concepts
+                  with Python programming languages.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Group Projects end -->
+
         <!-- Video Demo Section -->
-        <div class="w-full px-4 mt-20">
+        <div class="w-full px-4 mt-16">
           <div class="max-w-4xl mx-auto">
             <h3 class="font-semibold text-lg text-primary mb-2 text-center">Video Demo</h3>
             <h2 class="font-bold text-dark text-3xl mb-8 text-center dark:text-white">
               Demo Projects SAMPIS
             </h2>
-            <div class="relative w-full" style="padding-bottom: 56.25%; height: 0; overflow: hidden;">
+            <div class="relative w-full rounded-xl overflow-hidden shadow-lg" style="padding-bottom: 56.25%; height: 0;">
               <iframe
                 style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
                 src="https://www.youtube.com/embed/PXtXPSoXyho"
@@ -1025,7 +1058,7 @@
                     >Soft skills:</span
                   >
                   Public speaking, problem solving, leadership, team management,
-                  time management, critical thinking, and creativity.
+                  time management, critical thinking, and creativivity.
                 </p>
               </div>
             </div>
@@ -1113,15 +1146,15 @@
           <!-- hard skill -->
           <div class="w-full md:w-1/2 px-4 mb-10">
             <h3 class="font-semibold text-xl text-dark mb-4 dark:text-white">
-              Soft Skills
+              Hard Skills
             </h3>
             <ul class="space-y-2 text-slate-600 dark:text-slate-300">
-              <li>• Leadership</li>
-              <li>• Time Management</li>
-              <li>• Project Management</li>
-              <li>• Team Management</li>
-              <li>• Public Speaking</li>
-              <li>• Problem Solving</li>
+              <li>• Python, Machine Learning & Deep Learning</li>
+              <li>• Data Analysis (Pandas, SQL, Streamlit)</li>
+              <li>• Golang, PHP, MySQL, PostgreSQL</li>
+              <li>• HTML, CSS/Bootstrap, JavaScript</li>
+              <li>• UI/UX Prototyping</li>
+              <li>• ETL Pipeline Development</li>
             </ul>
           </div>
         </div>
@@ -1321,6 +1354,29 @@
         pagination: {
           el: ".swiper-pagination",
         },
+      });
+    </script>
+
+    <!-- Project category tabs -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var tabs = document.querySelectorAll(".project-tab");
+        var panels = document.querySelectorAll(".project-panel");
+
+        tabs.forEach(function (tab) {
+          tab.addEventListener("click", function () {
+            var targetId = tab.getAttribute("data-target");
+
+            tabs.forEach(function (t) {
+              t.classList.remove("active");
+            });
+            tab.classList.add("active");
+
+            panels.forEach(function (panel) {
+              panel.classList.toggle("active", panel.id === targetId);
+            });
+          });
+        });
       });
     </script>
   </body>
