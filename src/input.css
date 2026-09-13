@@ -146,6 +146,16 @@ section > .container {
   box-shadow: none;
 }
 
+#experiences .swiper-slide > div {
+  background: #f1f5f9;
+  box-shadow: none;
+}
+
+.dark #experiences .swiper-slide > div {
+  background: #1e293b;
+  box-shadow: none;
+}
+
 .swiper-pagination-bullet-active {
   background: #10b981 !important;
 }
