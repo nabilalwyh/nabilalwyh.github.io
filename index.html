@@ -15,6 +15,7 @@
     />
     <link href="dist/output.css" rel="stylesheet" />
     <link href="dist/ui.css" rel="stylesheet" />
+    <link href="dist/project-filter.css" rel="stylesheet" />
     <!-- Link Swiper's CSS -->
     <link
       rel="stylesheet"
@@ -374,13 +375,10 @@
         <div
           class="w-full px-4 flex flex-wrap justify-center xl:w-10/12 xl:mx-auto"
         >
-        <div class="project-section-label individual-label">
-          <p>Selected work</p>
-          <h3>Individual Projects</h3>
-        </div>
-        <div class="project-section-label team-label">
-          <p>Built through collaboration</p>
-          <h3>Team Projects</h3>
+        <div class="project-filter" role="group" aria-label="Filter projects">
+          <button type="button" class="project-filter-button is-active" data-filter="all" aria-pressed="true">All Projects</button>
+          <button type="button" class="project-filter-button" data-filter="individual" aria-pressed="false">Individual</button>
+          <button type="button" class="project-filter-button" data-filter="team" aria-pressed="false">Group Projects</button>
         </div>
         <!-- SAMPIS -->
         <div class="project-card team-project mb-12 p-4 md:w-1/2">
@@ -1243,6 +1241,21 @@
             el: slider.querySelector(".swiper-pagination"),
             clickable: true,
           },
+        });
+      });
+
+      document.querySelectorAll(".project-filter-button").forEach(function (button) {
+        button.addEventListener("click", function () {
+          var filter = button.dataset.filter;
+          document.querySelectorAll(".project-filter-button").forEach(function (item) {
+            var isSelected = item === button;
+            item.classList.toggle("is-active", isSelected);
+            item.setAttribute("aria-pressed", isSelected);
+          });
+
+          document.querySelectorAll("#portofolio .project-card").forEach(function (card) {
+            card.hidden = filter !== "all" && !card.classList.contains(filter + "-project");
+          });
         });
       });
     </script>
