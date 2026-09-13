@@ -3,7 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Portfolio of Nabila Alawiyah, an Informatics student interested in product, data, and machine learning."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <link href="dist/output.css" rel="stylesheet" />
+    <link href="dist/ui.css" rel="stylesheet" />
     <!-- Link Swiper's CSS -->
     <link
       rel="stylesheet"
@@ -192,7 +203,7 @@
         <div class="flex flex-wrap">
           <div class="w-full self-center px-4 lg:w-1/2">
             <h1 class="text-base font-semibold text-primary md:text-xl">
-              Helo there!👋 I'm
+              Hello there! 👋 I'm
               <span
                 class="block font-bold text-dark text-4xl mt-1 lg:text-5xl mb-3 dark:text-white"
                 >Nabila Alawiyah</span
@@ -207,8 +218,8 @@
             </p>
 
             <a
-              href="#contact"
-              class="text-base font-semibold text-white bg-primary py-6 px-8 rounded-full hover:shadow-lg hover:opacity-80 transition duration-300 ease-in-out"
+              href="mailto:nabilaalawiyah.25@gmail.com"
+              class="text-base font-semibold text-white bg-primary py-3 px-8 rounded-full hover:shadow-lg hover:opacity-80 transition duration-300 ease-in-out"
               >Contact Me</a
             >
           </div>
@@ -266,7 +277,7 @@
           </div>
           <div class="w-full px-4 lg:w-1/2">
             <h3
-              class="font-semibold text-dark text-2xl mb-4 lg-text-3xl lg:pt-10 dark:text-white"
+              class="font-semibold text-dark text-2xl mb-4 lg:text-3xl lg:pt-10 dark:text-white"
             >
               Lets Connect!
             </h3>
@@ -1137,7 +1148,7 @@
           <div class="flex items-center justify-center mb-5">
             <!-- linkedin -->
             <a
-              href="www.linkedin.com/in/nabilaalawiyah"
+                href="https://www.linkedin.com/in/nabilaalawiyah"
               target="_blank"
               class="w-9 h-9 mr-3 rounded-full flex justify-center text-white items-center border hover:border-primary hover:bg-primary hover:text-white"
             >
@@ -1215,10 +1226,16 @@
 
     <!-- Initialize Swiper -->
     <script>
-      var swiper = new Swiper(".mySwiper", {
-        pagination: {
-          el: ".swiper-pagination",
-        },
+      document.querySelectorAll(".mySwiper").forEach(function (slider) {
+        new Swiper(slider, {
+          slidesPerView: 1,
+          spaceBetween: 24,
+          autoHeight: true,
+          pagination: {
+            el: slider.querySelector(".swiper-pagination"),
+            clickable: true,
+          },
+        });
       });
     </script>
   </body>
