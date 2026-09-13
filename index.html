@@ -32,23 +32,16 @@
         object-fit: cover;
       }
 
-      /* Project filter tabs */
-      .project-tab {
-        transition: all 0.25s ease-in-out;
-      }
-      .project-tab.active {
-        background-color: #10B981;
-        color: #ffffff;
-        box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35);
-      }
-      .project-tab:not(.active) {
-        background-color: transparent;
-        color: #64748b;
-      }
-      .project-tab:not(.active):hover {
-        background-color: rgba(16, 185, 129, 0.1);
-        color: #10B981;
-      }
+      /* Project UI */
+      .project-panel { display: none; }
+      .project-panel.active { display: grid; }
+      .project-tab { transition: all 0.25s ease-in-out; color: #64748b; }
+      .project-tab:hover { color: #10B981; }
+      .project-tab.active { background-color: #10B981; color: #ffffff; box-shadow: 0 6px 18px rgba(16, 185, 129, 0.22); }
+      .project-card { transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease; }
+      .project-card:hover { transform: translateY(-5px); box-shadow: 0 18px 35px rgba(15, 23, 42, 0.10); border-color: rgba(16, 185, 129, 0.35); }
+      .project-link span { transition: transform 0.2s ease; }
+      .project-link:hover span { transform: translateX(4px); }
 
       /* Project card */
       .project-card {
@@ -350,394 +343,120 @@
     <!-- about end -->
 
     <!-- Portofolio start -->
-    <section id="portofolio" class="pt-36 pb-16 bg-slate-100 dark:bg-slate-800">
+    <section id="portofolio" class="pt-36 pb-20 bg-slate-100 dark:bg-slate-800">
       <div class="container">
+        <!-- Section heading -->
         <div class="w-full px-4">
-          <div class="max-w-xl mx-auto text-center mb-12">
-            <h4 class="font-semibold text-lg text-primary mb-2">Portofolio</h4>
-            <h2 class="font-bold text-dark text-3xl mb-4 dark:text-white">
-              Project
+          <div class="max-w-2xl mx-auto text-center mb-12">
+            <span class="inline-flex items-center rounded-full bg-primary/10 px-4 py-2 text-sm font-semibold text-primary mb-4">
+              Portfolio
+            </span>
+            <h2 class="font-bold text-dark text-3xl md:text-4xl mb-4 dark:text-white">
+              Selected Projects
             </h2>
-            <p class="font-medium text-md text-secondary">
-              As someone who is interested in data and the web, I actively
-              develop and collaborate on a number of projects that are related
-              to data and website.
+            <p class="font-medium text-base md:text-lg leading-relaxed text-secondary dark:text-slate-300">
+              A collection of projects covering product, data, machine learning, and web development.
             </p>
           </div>
         </div>
 
         <!-- Project filter tabs -->
-        <div class="w-full px-4 flex justify-center mb-10">
-          <div class="inline-flex items-center gap-2 bg-white dark:bg-slate-900 rounded-full p-1.5 shadow-sm">
-            <button
-              type="button"
-              data-target="individual-projects"
-              class="project-tab active font-semibold text-sm py-2.5 px-6 rounded-full"
-            >
+        <div class="w-full px-4 flex justify-center mb-12">
+          <div class="inline-flex items-center gap-1 bg-white dark:bg-slate-900 rounded-full p-1.5 shadow-sm border border-slate-200 dark:border-slate-700">
+            <button type="button" data-target="individual-projects"
+              class="project-tab active font-semibold text-sm py-2.5 px-5 md:px-7 rounded-full">
               Individual Projects
             </button>
-            <button
-              type="button"
-              data-target="group-projects"
-              class="project-tab font-semibold text-sm py-2.5 px-6 rounded-full"
-            >
+            <button type="button" data-target="group-projects"
+              class="project-tab font-semibold text-sm py-2.5 px-5 md:px-7 rounded-full">
               Group Projects
             </button>
           </div>
         </div>
 
         <!-- Individual Projects -->
-        <div
-          id="individual-projects"
-          class="project-panel active w-full px-4 flex-wrap justify-center xl:w-10/12 xl:mx-auto"
-        >
-        <!-- SAMPIS -->
-        <div class="mb-8 p-4 md:w-1/2">
-          <div class="project-card bg-white dark:bg-slate-900 rounded-xl shadow-md overflow-hidden h-full">
-            <div class="overflow-hidden">
-              <img
-                src="dist/img/portofolio/project11.png"
-                alt="SAMPIS"
-                class="w-full h-48 object-cover"
-              />
-            </div>
-            <div class="p-6">
-              <h3 class="font-semibold text-xl text-dark mb-3 dark:text-white">
-                <a
-                  target="_blank"
-                  href="https://sampis.netlify.app/"
-                  class="hover:text-primary"
-                  >SAMPIS</a
-                >
-              </h3>
-              <p class="font-medium text-base text-secondary">
-                Developed a deep learning-based image classification model for SAMPIS, a web platform for waste management that utilizes AI to classify household waste and supports a point-based recycling system
-              </p>
-            </div>
-          </div>
-        </div>
-        <!-- ml terapan - rekomendasi musik -->
-        <div class="mb-8 p-4 md:w-1/2">
-          <div class="project-card bg-white dark:bg-slate-900 rounded-xl shadow-md overflow-hidden h-full">
-            <div class="overflow-hidden">
-              <img
-                src="dist/img/portofolio/project9.png"
-                alt="Music Recommender System"
-                class="w-full h-48 object-cover"
-              />
-            </div>
-            <div class="p-6">
-              <h3 class="font-semibold text-xl text-dark mb-3 dark:text-white">
-                <a
-                  target="_blank"
-                  href="https://github.com/nabilalwyh/music-recommender-system"
-                  class="hover:text-primary"
-                  >Music Recommender System</a
-                >
-              </h3>
-              <p class="font-medium text-base text-secondary">
-                Course project from Dicoding in learning path Applied Machine Learning. Developed a model machine learning project focusing on Music Recommender System. I earned a 4 out of 5 stars rating for this project.
-              </p>
-            </div>
-          </div>
-        </div>
-        <!-- fundamental pemrosesan data -->
-          <div class="mb-8 p-4 md:w-1/2">
-            <div class="project-card bg-white dark:bg-slate-900 rounded-xl shadow-md overflow-hidden h-full">
-              <div class="overflow-hidden">
-                <img
-                  src="dist/img/portofolio/project10.png"
-                  alt="ETL Pipeline"
-                  class="w-full h-48 object-cover"
-                />
-              </div>
-              <div class="p-6">
-                <h3 class="font-semibold text-xl text-dark mb-3 dark:text-white">
-                  <a
-                    target="_blank"
-                    href="https://github.com/nabilalwyh/music-recommender-system"
-                    class="hover:text-primary"
-                    >ETL Pipeline</a
-                  >
-                </h3>
-                <p class="font-medium text-base text-secondary">
-                  Course project from Dicoding in learning path Fundamentals of Data Processing. Developed a project to build a simple ETL Pipeline. I earned a 5 out of 5 stars rating for this project.
-                </p>
-              </div>
-            </div>
-          </div>
-        <!-- ml terapan - predictive analyst -->
-          <div class="mb-8 p-4 md:w-1/2">
-            <div class="project-card bg-white dark:bg-slate-900 rounded-xl shadow-md overflow-hidden h-full">
-              <div class="overflow-hidden">
-                <img
-                  src="dist/img/portofolio/project10.png"
-                  alt="Predictive Analysis"
-                  class="w-full h-48 object-cover"
-                />
-              </div>
-              <div class="p-6">
-                <h3 class="font-semibold text-xl text-dark mb-3 dark:text-white">
-                  <a
-                    target="_blank"
-                    href="https://github.com/nabilalwyh/music-recommender-system"
-                    class="hover:text-primary"
-                    >Predict Obesity Level</a
-                  >
-                </h3>
-                <p class="font-medium text-base text-secondary">
-                  Course project from Dicoding in learning path Applied Machine Learning. Developed a model machine learning project focusing on predictive analytics system to predict obesity levels based on lifestyle patterns. I earned a 5 out of 5 stars rating for this project.
-                </p>
-              </div>
-            </div>
-          </div>
-        <!-- ml dev-klasifikasi gambar -->
-          <div class="mb-8 p-4 md:w-1/2">
-            <div class="project-card bg-white dark:bg-slate-900 rounded-xl shadow-md overflow-hidden h-full">
-              <div class="overflow-hidden">
-                <img
-                  src="dist/img/portofolio/project8.png"
-                  alt="Image Classification"
-                  class="w-full h-48 object-cover"
-                />
-              </div>
-              <div class="p-6">
-                <h3 class="font-semibold text-xl text-dark mb-3 dark:text-white">
-                  <a
-                    target="_blank"
-                    href="https://github.com/nabilalwyh/image-classification-of-17-vegetables/"
-                    class="hover:text-primary"
-                    >Image Classification of 17 Class Vegetables</a
-                  >
-                </h3>
-                <p class="font-medium text-base text-secondary">
-                  Course project from Dicoding in learning path Fundamentals of Deep Learning. Developed a model machine learning project focusing on Image Classification of 17 Types of Vegetables. I earned a 5 out of 5 stars rating for this project.
-                </p>
-              </div>
-            </div>
-          </div>
-        <!-- ml dev-sentimen -->
-          <div class="mb-8 p-4 md:w-1/2">
-            <div class="project-card bg-white dark:bg-slate-900 rounded-xl shadow-md overflow-hidden h-full">
-              <div class="overflow-hidden">
-                <img
-                  src="dist/img/portofolio/project7.png"
-                  alt="Sentiment Analysis"
-                  class="w-full h-48 object-cover"
-                />
-              </div>
-              <div class="p-6">
-                <h3 class="font-semibold text-xl text-dark mb-3 dark:text-white">
-                  <a
-                    target="_blank"
-                    href="https://github.com/nabilalwyh/sentimen-analisis-ruangguru/"
-                    class="hover:text-primary"
-                    >Sentiment Analysis</a
-                  >
-                </h3>
-                <p class="font-medium text-base text-secondary">
-                  Course project from Dicoding in learning path Fundamentals of Deep Learning. Developed a model machine learning project focusing on sentiment analysis on Ruang Guru app reviews on playstore. I earned a 4 out of 5 stars rating for this project.
-                </p>
-              </div>
-            </div>
-          </div>
-        <!-- bmlp -->
-          <div class="mb-8 p-4 md:w-1/2">
-            <div class="project-card bg-white dark:bg-slate-900 rounded-xl shadow-md overflow-hidden h-full">
-              <div class="overflow-hidden">
-                <img
-                  src="dist/img/portofolio/project6.png"
-                  alt="Belajar Mesin Learning Pemula"
-                  class="w-full h-48 object-cover"
-                />
-              </div>
-              <div class="p-6">
-                <h3 class="font-semibold text-xl text-dark mb-3 dark:text-white">
-                  <a
-                    target="_blank"
-                    href="https://github.com/nabilalwyh/BMLP-dicoding"
-                    class="hover:text-primary"
-                    >Clustering and Classification with Machine Learning</a
-                  >
-                </h3>
-                <p class="font-medium text-base text-secondary">
-                  Course project from Dicoding in learning path Machine Learning for Beginners. Earned a 4 out of 5 stars rating for the final project. 
-                </p>
-              </div>
-            </div>
-          </div>
-        <!-- gunadarmart -->
-          <div class="mb-8 p-4 md:w-1/2">
-            <div class="project-card bg-white dark:bg-slate-900 rounded-xl shadow-md overflow-hidden h-full">
-              <div class="overflow-hidden">
-                <img
-                  src="dist/img/portofolio/project5.png"
-                  alt="Analisis E-Commerce"
-                  class="w-full h-48 object-cover"
-                />
-              </div>
-              <div class="p-6">
-                <h3 class="font-semibold text-xl text-dark mb-3 dark:text-white">
-                  <a
-                    target="_blank"
-                    href="https://gunadarmart-ecommerce-analyst.streamlit.app/"
-                    class="hover:text-primary"
-                    >Analysis of E-Commerce Public Dataset</a
-                  >
-                </h3>
-                <p class="font-medium text-base text-secondary">
-                  Course project from Dicoding in learning path Data Analysis with
-                  Python. Earned a 4 out of 5 stars rating for the final project. 
-                </p>
-              </div>
-            </div>
-          </div>
-        <!-- maskapai -->
-          <div class="mb-8 p-4 md:w-1/2">
-            <div class="project-card bg-white dark:bg-slate-900 rounded-xl shadow-md overflow-hidden h-full">
-              <div class="overflow-hidden">
-                <img
-                  src="dist/img/portofolio/project2.png"
-                  alt="Website Data Maskapai Penerbangan"
-                  class="w-full h-48 object-cover"
-                />
-              </div>
-              <div class="p-6">
-                <h3 class="font-semibold text-xl text-dark mb-3 dark:text-white">
-                  <a
-                    href="https://github.com/nabilalwyh/daftar-maskapai-penerbangan"
-                    target="_blank"
-                    class="hover:text-primary"
-                    >Airline Data Website</a
-                  >
-                </h3>
-                <p class="font-medium text-base text-secondary">
-                  On this website, users can adding an airline data. This website is
-                  built using PHP, JSON, HTML, and CSS/Bootstrap v5 programming
-                  languages.
-                </p>
-              </div>
-            </div>
-          </div>
-        <!-- nasi kotak -->
-          <div class="mb-8 p-4 md:w-1/2">
-            <div class="project-card bg-white dark:bg-slate-900 rounded-xl shadow-md overflow-hidden h-full">
-              <div class="overflow-hidden">
-                <img
-                  src="dist/img/portofolio/project3.png"
-                  alt="Website Pemesanan Nasi Kotak"
-                  class="w-full h-48 object-cover"
-                />
-              </div>
-              <div class="p-6">
-                <h3 class="font-semibold text-xl text-dark mb-3 dark:text-white">
-                  <a
-                    href="https://github.com/nabilalwyh/pemesanan-nasi-kotak"
-                    target="_blank"
-                    class="hover:text-primary"
-                    >Terserah Restaurant Website</a
-                  >
-                </h3>
-                <p class="font-medium text-base text-secondary">
-                  Customers can order boxed rice from several boxed rice stall
-                  branches on this website. The programming languages PHP, HTML,
-                  CSS/Bootstrap v5, and JSON were used in the development of this
-                  website.
-                </p>
-              </div>
-            </div>
-          </div>
-        <!-- induksi magnet -->
-          <div class="mb-8 p-4 md:w-1/2">
-            <div class="project-card bg-white dark:bg-slate-900 rounded-xl shadow-md overflow-hidden h-full">
-              <div class="overflow-hidden">
-                <img
-                  src="dist/img/portofolio/project4.png"
-                  alt="Website Induksi Magnetik"
-                  class="w-full h-48 object-cover"
-                />
-              </div>
-              <div class="p-6">
-                <h3 class="font-semibold text-xl text-dark mb-3 dark:text-white">
-                  <a
-                    href="https://nabilalwyh.github.io/Induksi-Magnetik/"
-                    target="_blank"
-                    class="hover:text-primary"
-                    >Magnetic Induction Website</a
-                  >
-                </h3>
-                <p class="font-medium text-base text-secondary">
-                  This website teaches physics with a special focus on magnetic
-                  induction. Three subtopics make up this section: magnetic
-                  induction calculator, example problems, and basic theory. The
-                  programming languages Javascript, CSS/Bootstrap v5, and HTML were
-                  used in its development.
-                </p>
-              </div>
-            </div>
-          </div>
+        <div id="individual-projects"
+          class="project-panel active w-full px-4 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 xl:w-11/12 xl:mx-auto">
+
+          <!-- Music Recommender -->
+          <article class="project-card group bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm overflow-hidden flex flex-col">
+            <div class="relative overflow-hidden aspect-[16/10]"><img src="dist/img/portofolio/project9.png" alt="Music Recommender System" class="w-full h-full object-cover transition duration-500 group-hover:scale-105" /><span class="absolute top-4 left-4 rounded-full bg-white/90 dark:bg-slate-900/90 backdrop-blur px-3 py-1 text-xs font-semibold text-primary">Machine Learning</span></div>
+            <div class="p-6 flex flex-col flex-1"><h3 class="font-bold text-xl text-dark mb-3 dark:text-white">Music Recommender System</h3><p class="font-medium text-sm leading-6 text-secondary dark:text-slate-300 flex-1">Applied Machine Learning course project focused on building a music recommendation model. Earned a 4/5 rating.</p><a target="_blank" rel="noopener noreferrer" href="https://github.com/nabilalwyh/music-recommender-system" class="project-link mt-5 inline-flex items-center gap-2 font-semibold text-sm text-primary">View on GitHub <span>→</span></a></div>
+          </article>
+
+          <!-- ETL -->
+          <article class="project-card group bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm overflow-hidden flex flex-col">
+            <div class="relative overflow-hidden aspect-[16/10]"><img src="dist/img/portofolio/project10.png" alt="ETL Pipeline" class="w-full h-full object-cover transition duration-500 group-hover:scale-105" /><span class="absolute top-4 left-4 rounded-full bg-white/90 dark:bg-slate-900/90 backdrop-blur px-3 py-1 text-xs font-semibold text-primary">Data</span></div>
+            <div class="p-6 flex flex-col flex-1"><h3 class="font-bold text-xl text-dark mb-3 dark:text-white">ETL Pipeline</h3><p class="font-medium text-sm leading-6 text-secondary dark:text-slate-300 flex-1">Fundamentals of Data Processing course project focused on building a simple ETL pipeline. Earned a 5/5 rating.</p><a target="_blank" rel="noopener noreferrer" href="https://github.com/nabilalwyh/music-recommender-system" class="project-link mt-5 inline-flex items-center gap-2 font-semibold text-sm text-primary">View on GitHub <span>→</span></a></div>
+          </article>
+
+          <!-- Predict Obesity -->
+          <article class="project-card group bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm overflow-hidden flex flex-col">
+            <div class="relative overflow-hidden aspect-[16/10]"><img src="dist/img/portofolio/project10.png" alt="Predict Obesity Level" class="w-full h-full object-cover transition duration-500 group-hover:scale-105" /><span class="absolute top-4 left-4 rounded-full bg-white/90 dark:bg-slate-900/90 backdrop-blur px-3 py-1 text-xs font-semibold text-primary">Machine Learning</span></div>
+            <div class="p-6 flex flex-col flex-1"><h3 class="font-bold text-xl text-dark mb-3 dark:text-white">Predict Obesity Level</h3><p class="font-medium text-sm leading-6 text-secondary dark:text-slate-300 flex-1">Predictive analytics project that estimates obesity levels based on lifestyle patterns. Earned a 5/5 rating.</p><a target="_blank" rel="noopener noreferrer" href="https://github.com/nabilalwyh/music-recommender-system" class="project-link mt-5 inline-flex items-center gap-2 font-semibold text-sm text-primary">View on GitHub <span>→</span></a></div>
+          </article>
+
+          <!-- Vegetable Classification -->
+          <article class="project-card group bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm overflow-hidden flex flex-col">
+            <div class="relative overflow-hidden aspect-[16/10]"><img src="dist/img/portofolio/project8.png" alt="Image Classification of 17 Class Vegetables" class="w-full h-full object-cover transition duration-500 group-hover:scale-105" /><span class="absolute top-4 left-4 rounded-full bg-white/90 dark:bg-slate-900/90 backdrop-blur px-3 py-1 text-xs font-semibold text-primary">Deep Learning</span></div>
+            <div class="p-6 flex flex-col flex-1"><h3 class="font-bold text-xl text-dark mb-3 dark:text-white">17-Class Vegetable Classification</h3><p class="font-medium text-sm leading-6 text-secondary dark:text-slate-300 flex-1">Deep learning project for image classification across 17 types of vegetables. Earned a 5/5 rating.</p><a target="_blank" rel="noopener noreferrer" href="https://github.com/nabilalwyh/image-classification-of-17-vegetables/" class="project-link mt-5 inline-flex items-center gap-2 font-semibold text-sm text-primary">View on GitHub <span>→</span></a></div>
+          </article>
+
+          <!-- Sentiment -->
+          <article class="project-card group bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm overflow-hidden flex flex-col">
+            <div class="relative overflow-hidden aspect-[16/10]"><img src="dist/img/portofolio/project7.png" alt="Sentiment Analysis" class="w-full h-full object-cover transition duration-500 group-hover:scale-105" /><span class="absolute top-4 left-4 rounded-full bg-white/90 dark:bg-slate-900/90 backdrop-blur px-3 py-1 text-xs font-semibold text-primary">NLP</span></div>
+            <div class="p-6 flex flex-col flex-1"><h3 class="font-bold text-xl text-dark mb-3 dark:text-white">Sentiment Analysis</h3><p class="font-medium text-sm leading-6 text-secondary dark:text-slate-300 flex-1">Machine learning project analyzing sentiment from Ruang Guru app reviews on the Play Store. Earned a 4/5 rating.</p><a target="_blank" rel="noopener noreferrer" href="https://github.com/nabilalwyh/sentimen-analisis-ruangguru/" class="project-link mt-5 inline-flex items-center gap-2 font-semibold text-sm text-primary">View on GitHub <span>→</span></a></div>
+          </article>
+
+          <!-- BMLP -->
+          <article class="project-card group bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm overflow-hidden flex flex-col">
+            <div class="relative overflow-hidden aspect-[16/10]"><img src="dist/img/portofolio/project6.png" alt="Clustering and Classification with Machine Learning" class="w-full h-full object-cover transition duration-500 group-hover:scale-105" /><span class="absolute top-4 left-4 rounded-full bg-white/90 dark:bg-slate-900/90 backdrop-blur px-3 py-1 text-xs font-semibold text-primary">Machine Learning</span></div>
+            <div class="p-6 flex flex-col flex-1"><h3 class="font-bold text-xl text-dark mb-3 dark:text-white">Clustering &amp; Classification</h3><p class="font-medium text-sm leading-6 text-secondary dark:text-slate-300 flex-1">Machine Learning for Beginners final project covering clustering and classification techniques. Earned a 4/5 rating.</p><a target="_blank" rel="noopener noreferrer" href="https://github.com/nabilalwyh/BMLP-dicoding" class="project-link mt-5 inline-flex items-center gap-2 font-semibold text-sm text-primary">View on GitHub <span>→</span></a></div>
+          </article>
+
+          <!-- E-Commerce -->
+          <article class="project-card group bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm overflow-hidden flex flex-col">
+            <div class="relative overflow-hidden aspect-[16/10]"><img src="dist/img/portofolio/project5.png" alt="Analysis of E-Commerce Public Dataset" class="w-full h-full object-cover transition duration-500 group-hover:scale-105" /><span class="absolute top-4 left-4 rounded-full bg-white/90 dark:bg-slate-900/90 backdrop-blur px-3 py-1 text-xs font-semibold text-primary">Data Analysis</span></div>
+            <div class="p-6 flex flex-col flex-1"><h3 class="font-bold text-xl text-dark mb-3 dark:text-white">E-Commerce Dataset Analysis</h3><p class="font-medium text-sm leading-6 text-secondary dark:text-slate-300 flex-1">Data analysis project using a public e-commerce dataset. Earned a 4/5 rating for the final project.</p><a target="_blank" rel="noopener noreferrer" href="https://gunadarmart-ecommerce-analyst.streamlit.app/" class="project-link mt-5 inline-flex items-center gap-2 font-semibold text-sm text-primary">View Project <span>→</span></a></div>
+          </article>
+
+          <!-- Airline -->
+          <article class="project-card group bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm overflow-hidden flex flex-col">
+            <div class="relative overflow-hidden aspect-[16/10]"><img src="dist/img/portofolio/project2.png" alt="Airline Data Website" class="w-full h-full object-cover transition duration-500 group-hover:scale-105" /><span class="absolute top-4 left-4 rounded-full bg-white/90 dark:bg-slate-900/90 backdrop-blur px-3 py-1 text-xs font-semibold text-primary">Web Development</span></div>
+            <div class="p-6 flex flex-col flex-1"><h3 class="font-bold text-xl text-dark mb-3 dark:text-white">Airline Data Website</h3><p class="font-medium text-sm leading-6 text-secondary dark:text-slate-300 flex-1">Website for adding and managing airline data, built with PHP, JSON, HTML, and Bootstrap 5.</p><a target="_blank" rel="noopener noreferrer" href="https://github.com/nabilalwyh/daftar-maskapai-penerbangan" class="project-link mt-5 inline-flex items-center gap-2 font-semibold text-sm text-primary">View on GitHub <span>→</span></a></div>
+          </article>
+
+          <!-- Restaurant -->
+          <article class="project-card group bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm overflow-hidden flex flex-col">
+            <div class="relative overflow-hidden aspect-[16/10]"><img src="dist/img/portofolio/project3.png" alt="Terserah Restaurant Website" class="w-full h-full object-cover transition duration-500 group-hover:scale-105" /><span class="absolute top-4 left-4 rounded-full bg-white/90 dark:bg-slate-900/90 backdrop-blur px-3 py-1 text-xs font-semibold text-primary">Web Development</span></div>
+            <div class="p-6 flex flex-col flex-1"><h3 class="font-bold text-xl text-dark mb-3 dark:text-white">Terserah Restaurant Website</h3><p class="font-medium text-sm leading-6 text-secondary dark:text-slate-300 flex-1">Boxed-rice ordering website supporting multiple restaurant branches, built with PHP, HTML, Bootstrap 5, and JSON.</p><a target="_blank" rel="noopener noreferrer" href="https://github.com/nabilalwyh/pemesanan-nasi-kotak" class="project-link mt-5 inline-flex items-center gap-2 font-semibold text-sm text-primary">View on GitHub <span>→</span></a></div>
+          </article>
+
+          <!-- Magnetic Induction -->
+          <article class="project-card group bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm overflow-hidden flex flex-col">
+            <div class="relative overflow-hidden aspect-[16/10]"><img src="dist/img/portofolio/project4.png" alt="Magnetic Induction Website" class="w-full h-full object-cover transition duration-500 group-hover:scale-105" /><span class="absolute top-4 left-4 rounded-full bg-white/90 dark:bg-slate-900/90 backdrop-blur px-3 py-1 text-xs font-semibold text-primary">Web Development</span></div>
+            <div class="p-6 flex flex-col flex-1"><h3 class="font-bold text-xl text-dark mb-3 dark:text-white">Magnetic Induction Website</h3><p class="font-medium text-sm leading-6 text-secondary dark:text-slate-300 flex-1">Interactive physics learning website covering a magnetic induction calculator, example problems, and basic theory.</p><a target="_blank" rel="noopener noreferrer" href="https://nabilalwyh.github.io/Induksi-Magnetik/" class="project-link mt-5 inline-flex items-center gap-2 font-semibold text-sm text-primary">View Project <span>→</span></a></div>
+          </article>
         </div>
         <!-- Individual Projects end -->
 
         <!-- Group Projects -->
-        <div
-          id="group-projects"
-          class="project-panel w-full px-4 flex-wrap justify-center xl:w-10/12 xl:mx-auto"
-        >
-        <!-- covid19 -->
-          <div class="mb-8 p-4 md:w-1/2">
-            <div class="project-card bg-white dark:bg-slate-900 rounded-xl shadow-md overflow-hidden h-full">
-              <div class="overflow-hidden">
-                <img
-                  src="dist/img/portofolio/project1.png"
-                  alt="Analisis Covid19"
-                  class="w-full h-48 object-cover"
-                />
-              </div>
-              <div class="p-6">
-                <h3 class="font-semibold text-xl text-dark mb-3 dark:text-white">
-                  <a
-                    target="_blank"
-                    href="https://colab.research.google.com/github/nabilalwyh/covid19-at-kutai-timur/blob/main/analisis-kasus-covid19-di-kabupaten-kutai-timur.ipynb?authuser=1"
-                    class="hover:text-primary"
-                    >Analysis of COVID-19 cases in the region of Eastern Kutai.</a
-                  >
-                </h3>
-                <p class="font-medium text-base text-secondary">
-                  Group project in course statistics on normal distribution concepts
-                  with Python programming languages.
-                </p>
-              </div>
+        <div id="group-projects" class="project-panel w-full px-4 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 xl:w-11/12 xl:mx-auto">
+          <!-- SAMPIS -->
+          <article class="project-card group bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm overflow-hidden flex flex-col">
+            <div class="relative overflow-hidden aspect-[16/10]">
+              <img src="dist/img/portofolio/project11.png" alt="SAMPIS" class="w-full h-full object-cover transition duration-500 group-hover:scale-105" />
+              <span class="absolute top-4 left-4 rounded-full bg-white/90 dark:bg-slate-900/90 backdrop-blur px-3 py-1 text-xs font-semibold text-primary">Machine Learning</span>
             </div>
-          </div>
+            <div class="p-6 flex flex-col flex-1">
+              <h3 class="font-bold text-xl text-dark mb-3 dark:text-white">SAMPIS</h3>
+              <p class="font-medium text-sm leading-6 text-secondary dark:text-slate-300 flex-1">Deep learning-based image classification for a waste management platform, supporting household waste classification and a point-based recycling system.</p>
+              <a target="_blank" rel="noopener noreferrer" href="https://sampis.netlify.app/" class="project-link mt-5 inline-flex items-center gap-2 font-semibold text-sm text-primary">View Project <span>→</span></a>
+            </div>
+          </article>
         </div>
         <!-- Group Projects end -->
 
-        <!-- Video Demo Section -->
-        <div class="w-full px-4 mt-16">
-          <div class="max-w-4xl mx-auto">
-            <h3 class="font-semibold text-lg text-primary mb-2 text-center">Video Demo</h3>
-            <h2 class="font-bold text-dark text-3xl mb-8 text-center dark:text-white">
-              Demo Projects SAMPIS
-            </h2>
-            <div class="relative w-full rounded-xl overflow-hidden shadow-lg" style="padding-bottom: 56.25%; height: 0;">
-              <iframe
-                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-                src="https://www.youtube.com/embed/PXtXPSoXyho"
-                title="Demo Projects SAMPIS"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen>
-              </iframe>
-            </div>
-            <p class="font-medium text-base text-secondary mt-6 text-center">
-              Video ini menampilkan demo lengkap dari SAMPIS - platform manajemen limbah berbasis deep learning yang 
-              mengklasifikasi limbah rumah tangga dan mendukung sistem poin untuk daur ulang.
-            </p>
-          </div>
-        </div>
-        <!-- Video Demo End -->
-      </div>
     </section>
     <!-- Portofolio end -->
 
@@ -1332,11 +1051,7 @@
           </div>
           <p class="font-medium text-sm text-slate-500 text-center">
             Made by
-            <a
-              href="http://instagram.com/nabilalwyh"
-              target="_blank"
-              class="font-bold text-primary"
-              >Nabila Alawiyah</a
+            <a href="https://instagram.com/nabilalwyh" target="_blank" class="font-bold text-primary">Nabila Alawiyah</a
             >
           </p>
         </div>
